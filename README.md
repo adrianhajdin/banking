@@ -26,7 +26,7 @@
 3. 🔋 [Features](#features)
 4. 🤸 [Quick Start](#quick-start)
 5. 🕸️ [Code Snippets to Copy](#snippets)
-6. 🔗 [Links](#links)
+6. 🔗 [Assets](#links)
 7. 🚀 [More](#more)
 
 ## 🚨 Tutorial
