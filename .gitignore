@@ -37,3 +37,7 @@ next-env.d.ts
 
 # Sentry Config File
 .sentryclirc
+
+#ignore env files
+.env*
+!.env.example
