@@ -76,7 +76,9 @@ export function formatAmount(amount: number): string {
   return formatter.format(amount);
 }
 
-export const parseStringify = (value: any) => JSON.parse(JSON.stringify(value));
+export const parseStringify = (obj: any) => {
+  return JSON.parse(JSON.stringify(obj));
+};
 
 export const removeSpecialCharacters = (value: string) => {
   return value.replace(/[^\w\s]/gi, "");
@@ -88,18 +90,24 @@ interface UrlQueryParams {
   value: string;
 }
 
-export function formUrlQuery({ params, key, value }: UrlQueryParams) {
-  const currentUrl = qs.parse(params);
+export function formUrlQuery({
+  params,
+  key,
+  value,
+}: {
+  params: string;
+  key: string;
+  value: string | null;
+}) {
+  const currentParams = new URLSearchParams(params);
 
-  currentUrl[key] = value;
+  if (value === null) {
+    currentParams.delete(key);
+  } else {
+    currentParams.set(key, value);
+  }
 
-  return qs.stringifyUrl(
-    {
-      url: window.location.pathname,
-      query: currentUrl,
-    },
-    { skipNull: true }
-  );
+  return `${currentParams.toString()}`;
 }
 
 export function getAccountTypeColors(type: AccountTypes) {
