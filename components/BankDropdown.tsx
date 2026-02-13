@@ -21,12 +21,12 @@ export const BankDropdown = ({
 }: BankDropdownProps) => {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [selected, setSeclected] = useState(accounts[0]);
+  const [selected, setSelected] = useState(accounts[0]);
 
   const handleBankChange = (id: string) => {
     const account = accounts.find((account) => account.appwriteItemId === id)!;
 
-    setSeclected(account);
+    setSelected(account);
     const newUrl = formUrlQuery({
       params: searchParams.toString(),
       key: "id",

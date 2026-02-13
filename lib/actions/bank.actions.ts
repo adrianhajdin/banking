@@ -45,7 +45,7 @@ export const getAccounts = async ({ userId }: getAccountsProps) => {
           type: accountData.type as string,
           subtype: accountData.subtype! as string,
           appwriteItemId: bank.$id,
-          sharaebleId: bank.shareableId,
+          shareableId: bank.shareableId,
         };
 
         return account;
@@ -138,9 +138,9 @@ export const getInstitution = async ({
       country_codes: ["US"] as CountryCode[],
     });
 
-    const intitution = institutionResponse.data.institution;
+    const institution = institutionResponse.data.institution;
 
-    return parseStringify(intitution);
+    return parseStringify(institution);
   } catch (error) {
     console.error("An error occurred while getting the accounts:", error);
   }
@@ -162,7 +162,7 @@ export const getTransactions = async ({
 
       const data = response.data;
 
-      transactions = response.data.added.map((transaction) => ({
+      transactions.push(...response.data.added.map((transaction) => ({
         id: transaction.transaction_id,
         name: transaction.name,
         paymentChannel: transaction.payment_channel,
@@ -173,7 +173,7 @@ export const getTransactions = async ({
         category: transaction.category ? transaction.category[0] : "",
         date: transaction.date,
         image: transaction.logo_url,
-      }));
+      })));
 
       hasMore = data.has_more;
     }
