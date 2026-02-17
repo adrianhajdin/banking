@@ -40,7 +40,7 @@ export const signIn = async ({ email, password }: signInProps) => {
     cookies().set("appwrite-session", session.secret, {
       path: "/",
       httpOnly: true,
-      sameSite: "strict",
+      sameSite: "none",
       secure: true,
     });
 
@@ -95,7 +95,7 @@ export const signUp = async ({ password, ...userData }: SignUpParams) => {
     cookies().set("appwrite-session", session.secret, {
       path: "/",
       httpOnly: true,
-      sameSite: "strict",
+      sameSite: "none",
       secure: true,
     });
 
